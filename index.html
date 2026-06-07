@@ -88,7 +88,10 @@ nav.scrolled .n-burger span{background:var(--muted);}
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   text-align:center;padding:140px 40px 100px;
   position:relative;overflow:hidden;
+  margin-top:0;
 }
+body{background:#000;}
+#main ~ footer,#main > *:not(#hero):not(nav):not(.n-mobile){background:var(--bg);}
 .hero-noise{
   position:absolute;inset:0;opacity:.03;
   background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
@@ -374,13 +377,18 @@ footer{padding:28px 56px;border-top:1px solid var(--border2);display:flex;align-
   .sec,.sec,.sec{padding:80px 24px;}
 }
 @media(max-width:768px){
+  #hero{min-height:100svh;padding:100px 24px 60px;}
   .n-links,.n-cta{display:none;}
   .n-burger{display:flex;}
   .feat-grid,.plans,.sectors-grid{grid-template-columns:1fr;}
   #features .inner,#comment .inner,#tarifs .inner{padding:0 24px;}
-  #features,#comment,#tarifs,#sectors,#roi,#faq,#contact,#reference,#menu-preview{padding:80px 24px;}
+  #features,#comment,#tarifs,#sectors,#roi,#faq,#contact,#reference,#menu-preview{padding:60px 20px;}
   .c-in-row{grid-template-columns:1fr;}
   .ref-card{flex-direction:column;align-items:flex-start;}
+  .recap{font-size:11px;}
+  .recap th,.recap td{padding:8px 10px;}
+  table[style*="font-size:13px"]{font-size:11px!important;}
+  table[style*="font-size:13px"] td,table[style*="font-size:13px"] th{padding:10px 8px!important;}
   footer{flex-direction:column;gap:12px;padding:24px;text-align:center;}
 }
 </style>
@@ -465,8 +473,6 @@ footer{padding:28px 56px;border-top:1px solid var(--border2);display:flex;align-
   </div>
 </section>
 
-
-
 <!-- FEATURES -->
 <div id="features">
   <div class="inner">
@@ -499,7 +505,7 @@ footer{padding:28px 56px;border-top:1px solid var(--border2);display:flex;align-
       <h2 class="sec-h" style="text-align:center;">Vous utilisez déjà<br>Uber Eats ?</h2>
       <p class="sec-p" style="margin:0 auto;text-align:center;">Parfait — Hervé ne le remplace pas, il le complète. Uber Eats vous apporte de nouveaux clients. Hervé optimise ceux qui viennent directement chez vous.</p>
     </div>
-    <div class="reveal" style="background:#fff;border:1px solid var(--border2);border-radius:16px;overflow:hidden;max-width:900px;margin:0 auto;">
+    <div class="reveal" style="background:#fff;border:1px solid var(--border2);border-radius:16px;overflow-x:auto;max-width:900px;margin:0 auto;">
       <table style="width:100%;border-collapse:collapse;font-size:13px;">
         <thead>
           <tr style="background:var(--bg2);">
