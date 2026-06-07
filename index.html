@@ -863,23 +863,25 @@ footer{padding:28px 56px;border-top:1px solid var(--border2);display:flex;align-
       </div>
     </div>
     <div class="c-form-box reveal d2">
-      <div class="c-inputs">
-        <div class="c-in-row">
-          <input type="text" class="c-in" placeholder="Prénom" id="c1">
-          <input type="text" class="c-in" placeholder="Nom du business" id="c2">
+      <form id="contact-form" action="https://formspree.io/f/maqzearb" method="POST">
+        <div class="c-inputs">
+          <div class="c-in-row">
+            <input type="text" name="prenom" class="c-in" placeholder="Prénom" required>
+            <input type="text" name="business" class="c-in" placeholder="Nom du business" required>
+          </div>
+          <div class="c-in-row">
+            <input type="tel" name="telephone" class="c-in" placeholder="Téléphone" required>
+            <input type="email" name="email" class="c-in" placeholder="Email" required>
+          </div>
+          <select name="secteur" class="c-in" style="cursor:pointer;" required>
+            <option value="" disabled selected>Votre secteur</option>
+            <option>Restaurant</option><option>Hôtel</option><option>Coiffeur / Beauté</option><option>Commerce</option><option>Sport / Fitness</option><option>Autre</option>
+          </select>
+          <textarea name="message" class="c-in c-ta" placeholder="Quelques mots (optionnel)"></textarea>
+          <button type="submit" class="c-btn" id="cBtn">Demander ma démo gratuite →</button>
+          <div class="c-note">Réponse garantie sous 24h · Aucun engagement</div>
         </div>
-        <div class="c-in-row">
-          <input type="tel" class="c-in" placeholder="Téléphone" id="c3">
-          <input type="email" class="c-in" placeholder="Email" id="c4">
-        </div>
-        <select class="c-in" style="cursor:pointer;">
-          <option value="" disabled selected>Votre secteur</option>
-          <option>Restaurant</option><option>Hôtel</option><option>Coiffeur / Beauté</option><option>Commerce</option><option>Sport / Fitness</option><option>Autre</option>
-        </select>
-        <textarea class="c-in c-ta" placeholder="Quelques mots (optionnel)"></textarea>
-        <button class="c-btn" id="cBtn">Demander ma démo gratuite →</button>
-        <div class="c-note">Réponse garantie sous 24h · Aucun engagement</div>
-      </div>
+      </form>
     </div>
   </div>
 </div>
@@ -1021,15 +1023,32 @@ function toggleFaq(el){
 }
 
 // ===== CONTACT =====
-document.getElementById('cBtn').addEventListener('click',()=>{
-  const f=['c1','c2','c3'];
-  let ok=true;
-  f.forEach(id=>{const el=document.getElementById(id);if(!el.value.trim()){el.style.borderColor='rgba(232,35,26,.5)';ok=false;}else el.style.borderColor='rgba(255,255,255,.1)';});
-  if(!ok)return;
-  const btn=document.getElementById('cBtn');
-  btn.textContent='✅ Envoyé ! On vous rappelle sous 24h.';
-  btn.style.background='#e8e8e8';btn.disabled=true;
-});
+const contactForm = document.getElementById('contact-form');
+if(contactForm){
+  contactForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    const btn = document.getElementById('cBtn');
+    btn.textContent = 'Envoi en cours...';
+    btn.disabled = true;
+    fetch('https://formspree.io/f/maqzearb', {
+      method: 'POST',
+      body: new FormData(contactForm),
+      headers: {'Accept': 'application/json'}
+    }).then(function(res){
+      if(res.ok){
+        btn.textContent = '✅ Envoyé ! On vous rappelle sous 24h.';
+        btn.style.background = '#00a852';
+        contactForm.reset();
+      } else {
+        btn.textContent = '❌ Erreur — réessayez';
+        btn.disabled = false;
+      }
+    }).catch(function(){
+      btn.textContent = '❌ Erreur — réessayez';
+      btn.disabled = false;
+    });
+  });
+}
 
 // ===== SMOOTH SCROLL =====
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
