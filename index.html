@@ -344,6 +344,7 @@ nav.scrolled .n-burger span{background:var(--muted);}
 .c-in{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:#fff;padding:13px 16px;border-radius:8px;font-size:13px;font-family:'Inter',sans-serif;outline:none;transition:border-color .2s;width:100%;}
 .c-in:focus{border-color:rgba(255,255,255,.3);}
 .c-in::placeholder{color:rgba(255,255,255,.25);}
+.c-in option{background:#1a1a2e;color:#fff;}
 .c-in-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
 .c-ta{resize:vertical;min-height:80px;}
 .c-btn{background:#fff;color:#000;border:none;padding:14px;border-radius:8px;font-size:14px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s;width:100%;}
@@ -873,7 +874,7 @@ footer{padding:28px 56px;border-top:1px solid var(--border2);display:flex;align-
             <input type="tel" name="telephone" class="c-in" placeholder="Téléphone" required>
             <input type="email" name="email" class="c-in" placeholder="Email" required>
           </div>
-          <select name="secteur" class="c-in" style="cursor:pointer;" required>
+          <select name="secteur" class="c-in" style="cursor:pointer;color:#fff;" required>
             <option value="" disabled selected>Votre secteur</option>
             <option>Restaurant</option><option>Hôtel</option><option>Coiffeur / Beauté</option><option>Commerce</option><option>Sport / Fitness</option><option>Autre</option>
           </select>
