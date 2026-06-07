@@ -954,6 +954,14 @@ footer{padding:28px 56px;border-top:1px solid var(--border2);display:flex;align-
   });
 })();
 
+// ===== REVEAL =====
+function initReveal(){
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('in');});
+  },{threshold:.1});
+  document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
+}
+
 // ===== NAV =====
 window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>60));
 
