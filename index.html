@@ -267,7 +267,7 @@ body{background:#000;}
 /* SECTORS */
 #sectors{padding:100px 56px;max-width:1300px;margin:0 auto;}
 .sectors-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:48px;}
-.sc{background:#fff;border:1px solid var(--border2);border-radius:12px;padding:28px 24px;transition:all .25s;position:relative;overflow:hidden;}
+.sc{background:#fff;border:1px solid var(--border2);border-radius:12px;padding:28px 24px;transition:all .25s;position:relative;overflow:hidden;width:100%;}
 .sc:hover{border-color:var(--border);box-shadow:0 8px 24px rgba(0,0,0,.06);transform:translateY(-2px);}
 .sc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--text);transform:scaleX(0);transform-origin:left;transition:transform .35s;}
 .sc:hover::before{transform:scaleX(1);}
@@ -276,7 +276,7 @@ body{background:#000;}
 .sc-d{font-size:13px;color:var(--muted);line-height:1.6;}
 .sc-live{display:inline-block;margin-top:12px;font-size:9px;color:var(--green);background:rgba(0,168,82,.06);border:1px solid rgba(0,168,82,.2);padding:3px 9px;border-radius:20px;letter-spacing:1px;text-transform:uppercase;}
 .sc-soon{display:inline-block;margin-top:12px;font-size:9px;color:var(--muted2);background:var(--bg2);border:1px solid var(--border2);padding:3px 9px;border-radius:20px;letter-spacing:1px;text-transform:uppercase;}
-.sc-dashed{background:var(--bg2);border-style:dashed;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.sc-dashed{background:var(--bg2);border-style:dashed;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:180px;}
 
 /* TARIFS */
 #tarifs{padding:100px 56px;}
@@ -284,9 +284,9 @@ body{background:#000;}
 .plans{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:48px;}
 
 /* Tableau récapitulatif */
-.recap-table{margin-top:32px;background:var(--bg2);border:1px solid var(--border2);border-radius:12px;padding:24px 28px;}
+.recap-table{margin-top:32px;background:var(--bg2);border:1px solid var(--border2);border-radius:12px;padding:24px 28px;overflow-x:auto;}
 .recap-title{font-size:13px;font-weight:500;color:var(--text);margin-bottom:16px;}
-.recap{width:100%;border-collapse:collapse;font-size:12px;}
+.recap{width:100%;border-collapse:collapse;font-size:12px;min-width:500px;}
 .recap th{text-align:left;color:var(--muted);font-weight:500;padding:8px 12px;border-bottom:1px solid var(--border2);letter-spacing:.5px;font-size:11px;text-transform:uppercase;}
 .recap td{padding:10px 12px;border-bottom:1px solid var(--border2);color:var(--muted);}
 .recap tbody tr:last-child td{border-bottom:none;}
@@ -380,7 +380,10 @@ footer{padding:28px 56px;border-top:1px solid var(--border2);display:flex;align-
   #hero{min-height:100svh;padding:100px 24px 60px;}
   .n-links,.n-cta{display:none;}
   .n-burger{display:flex;}
-  .feat-grid,.plans,.sectors-grid{grid-template-columns:1fr;}
+  .feat-grid,.sectors-grid{grid-template-columns:1fr;}
+  .plans{grid-template-columns:1fr 1fr;gap:8px;}
+  #sectors{padding:60px 20px;}
+  .sectors-grid{gap:10px;}
   #features .inner,#comment .inner,#tarifs .inner{padding:0 24px;}
   #features,#comment,#tarifs,#sectors,#roi,#faq,#contact,#reference,#menu-preview{padding:60px 20px;}
   .c-in-row{grid-template-columns:1fr;}
@@ -690,7 +693,7 @@ footer{padding:28px 56px;border-top:1px solid var(--border2);display:flex;align-
     <div class="sc reveal d3"><span class="sc-em">✂️</span><div class="sc-n">Coiffeur & Beauté</div><div class="sc-d">Réservation en ligne, gestion des RDV, suivi client, analytics prestations rentables.</div><div class="sc-soon">Bientôt</div></div>
     <div class="sc reveal d1"><span class="sc-em">🛍</span><div class="sc-n">Commerce</div><div class="sc-d">Gestion du stock, analytics des ventes, programme fidélité, caisse connectée.</div><div class="sc-soon">Bientôt</div></div>
     <div class="sc reveal d2"><span class="sc-em">🏋️</span><div class="sc-n">Sport & Fitness</div><div class="sc-d">Abonnements, réservation de cours, suivi membres, analytics fréquentation.</div><div class="sc-soon">Bientôt</div></div>
-    <div class="sc sc-dashed reveal d3"><span class="sc-em">🤝</span><div class="sc-n">Votre secteur ?</div><div class="sc-d">Vous avez un business qui mérite d'être digitalisé ? Parlons-en. Hervé s'adapte.</div><a href="#contact" style="margin-top:14px;font-size:12px;color:var(--accent);text-decoration:none;font-weight:500;">Nous contacter →</a></div>
+    <div class="sc sc-dashed reveal d3" style="min-height:180px;"><span class="sc-em">🤝</span><div class="sc-n">Votre secteur ?</div><div class="sc-d">Vous avez un business qui mérite d'être digitalisé ? Parlons-en. Hervé s'adapte.</div><a href="#contact" style="margin-top:14px;font-size:12px;color:var(--accent);text-decoration:none;font-weight:500;">Nous contacter →</a></div>
   </div>
 </section>
 
