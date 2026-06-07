@@ -29,9 +29,9 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;overf
 /* ========== INTRO H → HERVÉ (identique admin) ========== */
 #intro{position:fixed;inset:0;background:#070707;z-index:9999;display:flex;align-items:center;justify-content:center;}
 #h-init{position:absolute;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;pointer-events:none;}
-#h-container{position:relative;opacity:0;min-width:60px;min-height:60px;}
-#h-left{position:absolute;background:#fff;border-radius:3px;}
-#h-cross{position:absolute;background:#fff;border-radius:3px;top:50%;transform:translateY(-50%);}
+#h-container{position:relative;opacity:0;}
+#h-left{position:absolute;background:#fff;border-radius:3px;left:0;}
+#h-cross{position:absolute;width:100%;background:#fff;border-radius:3px;top:50%;transform:translateY(-50%);}
 #h-right{position:absolute;background:#fff;border-radius:3px;}
 #splash-logo{opacity:0;display:flex;flex-direction:column;align-items:center;gap:12px;}
 #splash-logo .logo-row{display:flex;align-items:flex-end;gap:14px;}
@@ -390,10 +390,10 @@ footer{padding:28px 56px;border-top:1px solid var(--border2);display:flex;align-
 <!-- INTRO H → HERVÉ -->
 <div id="intro">
   <div id="h-init">
-    <div id="h-container">
-      <div id="h-left"></div>
-      <div id="h-cross"></div>
-      <div id="h-right"></div>
+    <div id="h-container" style="width:70px;height:72px;position:relative;opacity:0;">
+      <div id="h-left"  style="position:absolute;left:0;width:24px;height:72px;background:#fff;border-radius:3px;"></div>
+      <div id="h-cross" style="position:absolute;width:100%;height:14px;background:#fff;border-radius:3px;top:50%;transform:translateY(-50%);"></div>
+      <div id="h-right" style="position:absolute;right:0;width:24px;height:72px;background:#fff;border-radius:3px;"></div>
     </div>
   </div>
   <div id="splash-logo">
@@ -890,15 +890,12 @@ document.body.style.overflow='hidden';
 
 requestAnimationFrame(function(){
   const rect=document.getElementById('sl0').getBoundingClientRect();
-  // Utiliser valeurs réelles ou fallback lisible
-  const hW=Math.max(rect.width, 52);
-  const hH=Math.max(rect.height*0.82, 52);
-  const bw=Math.round(hW*0.27);
+  const hH=rect.height*0.82, hW=rect.width, bw=Math.round(hW*0.27);
   hContainer.style.width=hW+'px';hContainer.style.height=hH+'px';
-  hLeft.style.width=bw+'px';hLeft.style.height=hH+'px';hLeft.style.left='0';
+  hLeft.style.width=bw+'px';hLeft.style.height=hH+'px';
   hRight.style.width=bw+'px';hRight.style.height=hH+'px';
   hRight.style.left=(hW-bw)+'px';hRight.style.right='auto';
-  hCross.style.height=Math.round(hH*0.17)+'px';hCross.style.width='100%';hCross.style.left='0';
+  hCross.style.height=Math.round(hH*0.17)+'px';
 
   // Reset
   splashLogo.style.opacity='0';
